@@ -8,9 +8,10 @@
 #define IN3 9
 #define IN4 8
 
-int delay2 = 2;
-int delay6 = 6;
-int delay10 = 10;
+// 
+int delay4 = 4;
+int delay8 = 8;
+int delay11 = 11;
 
 void setup() {
   Serial.begin(9600);
@@ -51,110 +52,108 @@ void loop() {
   Serial.println();
 
   if(cm > 20){
-    stepMotor(1);
+    stepMotor4();
   }
 
   else if(cm <= 20 && cm > 10){
-    stepMotor(2);
+    stepMotor8();
   }
 
   else if(cm <= 10 && cm > 5){
-    stepMotor(3);
+    stepMotor11();
   }
 
   else if(cm <= 5 && cm >= 0){
-    stepMotor(4);
+    stepMotor0();
   }
 
 }
 
-void stepMotor(int direction) {
-  
-  if (direction == 1) {
+void stepMotor4(){
+
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay2);
+    delay(delay4);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay2);
+    delay(delay4);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
-    delay(delay2);
+    delay(delay4);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    delay(delay2);
+    delay(delay4);
   }
 
-    else if (direction == 2) {
+void stepMotor8(){
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay6);
+    delay(delay8);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay6);
+    delay(delay8);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
-    delay(delay6);
+    delay(delay8);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    delay(delay6);
+    delay(delay8);
   }
 
-    else if (direction == 3) {
+void stepMotor11(){
     digitalWrite(IN1, HIGH);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay10);
+    delay(delay11);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, HIGH);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
-    delay(delay10);
+    delay(delay11);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, HIGH);
     digitalWrite(IN4, LOW);
-    delay(delay10);
+    delay(delay11);
     
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    delay(delay10);
+    delay(delay11);
   }
 
-    else if (direction == 4) {
+void stepMotor0(){
     digitalWrite(IN1, LOW);
     digitalWrite(IN2, LOW);
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, LOW);
   } 
-}
 
 long microsecondsToCentimeters(long microseconds) {
   // The speed of sound is 340 m/s or 29 microseconds per centimeter.
